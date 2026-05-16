@@ -76,6 +76,22 @@ public class DoubleLinkedList04 {
         Node04 current = head;
         while (current != null) {
             current.data.tampil();
-            current = current.next;        }
+            System.out.println();
+            current = current.next;
+        }
+    }
+
+    public void printReserve() {
+        if (isEmpty()) {
+            System.out.println("Linked List Masih Kosong");
+            return;
+        }
+
+        Node04 current = tail;
+        while (current != null) {
+            current.data.tampil();
+            System.out.println();
+            current = current.prev;
+        }
     }
 }

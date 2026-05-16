@@ -32,6 +32,7 @@ public class DoubleLinkedListMain04 {
             System.out.println("4. Hapus Data Di Awal");
             System.out.println("5. Hapus Data Di Akhir");
             System.out.println("6. Tampilkan Data");
+            System.out.println("7. Tampilkan Data Secara Terbalik");
             System.out.println("0. Keluar");
             System.out.print("Pilih Menu: ");
             pilihan = scan.nextInt();
@@ -67,6 +68,10 @@ public class DoubleLinkedListMain04 {
 
                 case 6:
                     list.print();
+                    break;
+
+                case 7:
+                    list.printReserve();
                     break;
 
                 case 0:
