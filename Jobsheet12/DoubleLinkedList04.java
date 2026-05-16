@@ -94,4 +94,43 @@ public class DoubleLinkedList04 {
             current = current.prev;
         }
     }
+
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Linked List kosong.");
+            return;
+        }
+
+        Mahasiswa04 dataDihapus = head.data;
+
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+
+        System.out.println("Data Berhasil DiHapus.");
+        dataDihapus.tampil();
+    }
+
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Linked List kosong.");
+            return;
+        }
+
+        Mahasiswa04 dataDihapus = tail.data;
+
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+        }
+
+        System.out.println("Data Berhasil DiHapus.");
+        dataDihapus.tampil();
+    }
+
 }
