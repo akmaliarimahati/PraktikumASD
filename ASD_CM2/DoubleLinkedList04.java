@@ -124,10 +124,10 @@ public class DoubleLinkedList04 {
         // memanggil fungsi pengurutan berdasrkan nama
         urutkanBerdasarkanNama();
 
-        System.out.println("=========================================");
-        System.out.println("   LAPORAN PESANAN (URUT NAMA PESANAN)   ");
-        System.out.println("=========================================");
-        System.out.printf("%-15s %-20s %-10s\n", "Kode Pesanan", "Nama Pesanan", "Harga");
+        System.out.println("==========================================================");
+        System.out.println("           LAPORAN PESANAN (URUT NAMA PESANAN)            ");
+        System.out.println("==========================================================");
+        System.out.printf("%-15s %-20s %-15s %-10s\n", "Kode Pesanan", "Nama Pesanan", "Kategori", "Harga");
         
         Node04 current = head;
         // variable untuk uang masuk
@@ -141,8 +141,54 @@ public class DoubleLinkedList04 {
             totalPendapatan += current.pesanan.harga;
             current = current.next; 
         }
-        System.out.println("=========================================");
+        System.out.println("==========================================================");
         System.out.println("Total Pendapatan Restoran: Rp " + totalPendapatan);
-        System.out.println("=========================================");
+        System.out.println("==========================================================");
+    }
+
+    // tambah method untuk mencetak laporan per kategori
+    public void cetakLaporanPerKategori() {
+        if (isEmpty()) {
+            System.out.println("Belum ada pesanan yang direkap!");
+            return;
+        }
+
+        System.out.println("==========================================================");
+        System.out.println("               LAPORAN PESANAN PER KATEGORI               ");
+        System.out.println("==========================================================");
+
+        // 1. Cetak Kelompok Makanan
+        System.out.println("KATEGORI: MAKANAN");
+        System.out.printf("%-15s %-20s %-15s %-10s\n", "Kode Pesanan", "Nama Pesanan", "Kategori", "Harga");
+        System.out.println("----------------------------------------------------------");
+        Node04 current = head;
+        int subTotalMakanan = 0;
+        while (current != null) {
+            if (current.pesanan.kategori.equalsIgnoreCase("Makanan")) {
+                current.pesanan.tampilPesanan();
+                subTotalMakanan += current.pesanan.harga;
+            }
+            current = current.next;
+        }
+        System.out.println("Subtotal Makanan: Rp " + subTotalMakanan);
+        System.out.println();
+
+        // 2. Cetak Kelompok Minuman
+        System.out.println("KATEGORI: MINUMAN");
+        System.out.printf("%-15s %-20s %-15s %-10s\n", "Kode Pesanan", "Nama Pesanan", "Kategori", "Harga");
+        System.out.println("----------------------------------------------------------");
+        current = head;
+        int subTotalMinuman = 0;
+        while (current != null) {
+            if (current.pesanan.kategori.equalsIgnoreCase("Minuman")) {
+                current.pesanan.tampilPesanan();
+                subTotalMinuman += current.pesanan.harga;
+            }
+            current = current.next;
+        }
+        System.out.println("Subtotal Minuman: Rp " + subTotalMinuman);
+        System.out.println("==========================================================");
+        System.out.println("Total Pendapatan Gabungan: Rp " + (subTotalMakanan + subTotalMinuman));
+        System.out.println("==========================================================");
     }
 }

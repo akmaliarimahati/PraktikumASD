@@ -28,6 +28,8 @@ public class SistemAntrianMain04 {
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian dan Pesan");
             System.out.println("4. Laporan Pesanan");
+            // menu baru
+            System.out.println("5. Laporan Pesanan per Kategori");
             System.out.println("0. Keluar");
             System.out.print("Pilih menu: ");
             pilihan = sc.nextInt();
@@ -66,11 +68,16 @@ public class SistemAntrianMain04 {
                         sc.nextLine();
                         System.out.print("Nama Pesanan : ");
                         String menuMakan = sc.nextLine();
+
+                        // kategori baru
+                        System.out.print("Kategori (Makanan/Minuman): ");
+                        String kategori = sc.nextLine();
+
                         System.out.print("Harga        : ");
                         int harga = sc.nextInt();
 
                         // masukkan hasil input menu ke list laporan
-                        Pesanan04 pesananBaru = new Pesanan04(kode, menuMakan, harga);
+                        Pesanan04 pesananBaru = new Pesanan04(kode, menuMakan, harga, kategori);
                         listLaporan.tambahPesanan(pesananBaru);
 
                         System.out.println(antreanDipanggil.pembeli.namaPembeli + " telah memesan " + menuMakan);
@@ -84,6 +91,10 @@ public class SistemAntrianMain04 {
                     listLaporan.cetakLaporanPesanan();
                     break;
 
+                case 5:
+                    listLaporan.cetakLaporanPerKategori();
+                    break;
+                    
                 case 0:
                     // menu untuk keluar dari program
                     System.out.println("Terima kasih telah menggunakan Sistem Royal Delish!");
