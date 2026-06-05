@@ -20,7 +20,7 @@ public class DoubleLinkedList04 {
             // jika list dalam keaadan kosong, node baru langsung ditunjuk oleh head dan tail sekaligus
             head = tail = newNode;
         } else {
-            // jika list sudah terisi, pasang node baru di belakang tail yang lama
+            // jika list sudah terisi, pasang node baru di belakang tail yang lama (proses masaingin prev sama next dari new node)
             tail.next = newNode; 
             newNode.prev = tail; 
             // menggeser tail ke node yang baru ditambahkan
@@ -40,7 +40,7 @@ public class DoubleLinkedList04 {
         System.out.println("=========================================");
         System.out.printf("%-12s %-15s %-15s\n", "No Antrian", "Nama", "No HP");
         
-        // menampikan node dari head
+        // menampikan node dari head (traversal)
         Node04 current = head;
         while (current != null) {
             System.out.printf("%-12d", current.noAntrian);
@@ -63,7 +63,7 @@ public class DoubleLinkedList04 {
             // jika isi list hanya ada satu maka mengkosonngkan head dan tail
             head = tail = null;
         } else {
-            // jika lebih dari satu maka geser posisi head maju satu langkah ke belakang
+            // jika lebih dari satu maka geser posisi head maju satu langkah ke belakang (memutus hubungan setelahnya head)
             head = head.next;
             // ini digunakan untuk memutus sambungan balik ke node yang lama/yang sudha dihapus
             head.prev = null;
@@ -96,7 +96,7 @@ public class DoubleLinkedList04 {
             swapped = false;
             Node04 current = head;
 
-            // selama data sekarang dan data depannya atau bersebalahan
+            // selama data sekarang dan data depannya atau bersebalahan tidak sama dengan null
             while (current != null && current.next != null) {
                 // membandingkan jika nama pesanan saat ini secara alfabetis lebih besar dari setelahnya, tukar posisi data
                 if (current.pesanan.namaPesanan.compareToIgnoreCase(current.next.pesanan.namaPesanan) > 0) {
